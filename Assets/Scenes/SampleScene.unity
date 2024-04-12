@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 844785933}
   - component: {fileID: 844785932}
   - component: {fileID: 844785937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustSpeed: 1.5
   turnSpeed: 0.2
+  projectilePrefab: {fileID: 2464542949863065967, guid: c01c4f40d7740a14b803bb21e08812db, type: 3}
 --- !u!60 &844785933
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -435,7 +436,7 @@ Transform:
   m_GameObject: {fileID: 844785931}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
