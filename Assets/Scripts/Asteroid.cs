@@ -30,4 +30,25 @@ public class Asteroid : MonoBehaviour
         Destroy(gameObject, lifeTime);
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Projectile") 
+        {
+            if ((size / 2) >= minSize)
+            {
+                CreateClone();
+                CreateClone();
+            }
+            Destroy(gameObject);
+        }
+    }
+    private void CreateClone()
+    {
+        Vector2 position = transform.position;
+        position += Random.insideUnitCircle * 0.5f;
+
+        Asteroid clone = Instantiate(this, position, transform.rotation);
+        clone.size = size / 2;
+        clone.SetTrajectory(Random.insideUnitCircle.normalized * speed);
+    }
 }

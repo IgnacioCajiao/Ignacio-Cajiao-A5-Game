@@ -32,10 +32,4 @@ public class AsteroidSpawner : MonoBehaviour
             asteroid.SetTrajectory(rotation * -spawnDirection);
         }
     }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
