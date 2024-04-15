@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float thrustSpeed = 1.0f;
     public float turnSpeed = 1.0f;
     public Projectile projectilePrefab;
+    public GameOverTextController gameOverTextController;
 
     // Start is called before the first frame update
     void Awake()
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Asteroid")
         {
             Destroy(gameObject);
+            gameOverTextController.ShowGameOverText();
         }
     }
 }
