@@ -10,6 +10,7 @@ public class Asteroid : MonoBehaviour
     public float minSize = 0.5f;
     public float speed = 50.0f;
     public float lifeTime = 30.0f;
+    public static int score = 0;
 
     private void Awake()
     {
@@ -34,14 +35,28 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile") 
         {
+            AsteroidDestroyed(this);
             if ((size / 2) >= minSize)
             {
                 CreateClone();
                 CreateClone();
             }
-            Destroy(gameObject);
+            Destroy(gameObject);           
         }
     }
+
+    public void AsteroidDestroyed(Asteroid asteroid)
+    {
+        if (asteroid.size < 0.65f)
+        {
+            score += 100;
+        }
+        else if (asteroid.size > 0.8f)
+        {
+            score += 50;
+        }
+    }
+
     private void CreateClone()
     {
         Vector2 position = transform.position;

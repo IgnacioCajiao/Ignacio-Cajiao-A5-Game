@@ -48,4 +48,11 @@ public class Player : MonoBehaviour
         Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
         projectile.Project(transform.up);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
