@@ -12,13 +12,12 @@ public class Player : MonoBehaviour
     public Projectile projectilePrefab;
     public GameOverTextController gameOverTextController;
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    // set up for player controls also calls shoot funciton on space press.
     void Update()
     {
         thrust = Input.GetKey(KeyCode.UpArrow);
@@ -33,6 +32,7 @@ public class Player : MonoBehaviour
             Shoot();
 
     }
+    // apply forces to rigidbody for thrust and rotation.
     public void FixedUpdate()
     {
         if (thrust)
@@ -44,11 +44,13 @@ public class Player : MonoBehaviour
         }
             
     }
+    // Creates a projectile at the players location and rotation, then calls project to make it move.
     private void Shoot()
     {
         Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
         projectile.Project(transform.up);
     }
+    // checks if player collided with asteriod, if so player is destroyed and game over text is displayed.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Asteroid")

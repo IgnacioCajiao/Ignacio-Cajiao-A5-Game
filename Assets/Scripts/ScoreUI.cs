@@ -12,7 +12,7 @@ public class UI : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // displays asteroid score ingame 
     void Update()
     {
         scoreText.text = "Score: " + Asteroid.score;

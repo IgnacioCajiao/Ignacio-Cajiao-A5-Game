@@ -6,7 +6,8 @@ using UnityEngine;
 public class RestartUI : MonoBehaviour
 {
     private TextMeshProUGUI restartText;
-    // Start is called before the first frame update
+
+    // this shows and hides the restart text
     void Start()
     {
         restartText = GetComponent<TextMeshProUGUI>();

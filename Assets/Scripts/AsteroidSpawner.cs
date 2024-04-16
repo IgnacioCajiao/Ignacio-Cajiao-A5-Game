@@ -10,12 +10,14 @@ public class AsteroidSpawner : MonoBehaviour
     public float spawnDistance = 15.0f;
     public float trajectoryVar = 15.0f;
     
-    // Start is called before the first frame update
+    // this calls the spawn function repeatedly with a delay
     void Start()
     {
         InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
-
+    // this spawns the asteroids with a random spawn direction and point,and creates a rotation with an random variance.
+    // also makes asteroid a random size between minSize and maxSize
+    // and trajectory is set to opposite of spawn direction
     private void Spawn()
     {
         for (int i = 0; i < spawnCount; i++)

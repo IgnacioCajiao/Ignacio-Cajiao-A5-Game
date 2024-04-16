@@ -17,20 +17,22 @@ public class Asteroid : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Start is called before the first frame update
+    // this sets a random rotation, also sets size and mass of the asteroids
     void Start()
     {
         transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 360.0f);
         transform.localScale = Vector3.one * size;
         rb.mass = size;
     }
-
+    // applies force and direction to the asteroid, also destroys them after 30sec
     public void SetTrajectory(Vector2 direction)
     {
         rb.AddForce(direction * speed);
         Destroy(gameObject, lifeTime);
 
     }
+    // if the asteroid collides with the projectile if the size of the asteroid /2 is greater then the min size call 2 clone functions.
+    // also destroys the first asteroid. also calls asteroid destroyed to increase score on collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Projectile") 
@@ -44,7 +46,7 @@ public class Asteroid : MonoBehaviour
             Destroy(gameObject);           
         }
     }
-
+    // increases score depending on the size of asteroid you destroyed.
     public void AsteroidDestroyed(Asteroid asteroid)
     {
         if (asteroid.size < 0.65f)
@@ -56,7 +58,7 @@ public class Asteroid : MonoBehaviour
             score += 50;
         }
     }
-
+    // this creates the two clones around the original asteroid, makes them half the size of the original and gives them a trajectory and speed.
     private void CreateClone()
     {
         Vector2 position = transform.position;

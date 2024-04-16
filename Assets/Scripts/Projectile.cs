@@ -17,12 +17,12 @@ public class Projectile : MonoBehaviour
     {
         
     }
-
+    // adds force to projectile 
     public void Project(Vector2 direction)
     {
         rb.AddForce(direction * speed);
     }
-
+    // when projectile collides with anything it is destroyed
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
         Destroy(gameObject);
